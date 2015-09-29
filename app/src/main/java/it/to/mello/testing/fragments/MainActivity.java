@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TopSectionFragment.TopSectionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,14 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    // this gets called by the top fragment when user clicks the button
+    @Override
+    public void createMeme(String top, String bottom) {
+        BottomPictureFragment bottomFragment = (BottomPictureFragment) getSupportFragmentManager().findFragmentById(R.id.fragment2);
+        bottomFragment.setMemeText(top, bottom);
+
     }
 
     @Override
